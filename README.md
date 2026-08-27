@@ -94,13 +94,8 @@ is run **from inside that project folder**, since that's where
    python manage.py createsuperuser
    ```
 
-6. **Run the development server**
-   ```bash
-   python manage.py runserver
-   ```
-   Visit `http://localhost:8000`.
 
-7. **Run the test suite**
+6. **Run the test suite**
    ```bash
    USE_SQLITE=1 python manage.py test
    ```
