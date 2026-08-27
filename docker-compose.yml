@@ -1,0 +1,52 @@
+# Runs the News Application together with a MariaDB database.
+#
+# Usage:
+#   1. Make sure Docker Desktop (or the Docker daemon) is running.
+#   2. From the project folder (where this file lives), optionally copy
+#      .env.example to .env and edit it - Compose loads a .env file in
+#      this same folder automatically, no extra flags needed.
+#   3. docker compose up --build
+#
+# The app will then be available at http://localhost:8000
+# No Python/venv setup is required for this option - everything Python
+# related happens inside the containers.
+version: "3.9"
+
+services:
+  db:
+    image: mariadb:11
+    restart: unless-stopped
+    environment:
+      MARIADB_DATABASE: ${DB_NAME:-newsdb}
+      MARIADB_USER: ${DB_USER:-newsapp}
+      MARIADB_PASSWORD: ${DB_PASSWORD:-newsapp_password}
+      MARIADB_ROOT_PASSWORD: ${DB_ROOT_PASSWORD:-root_password}
+    volumes:
+      - mariadb_data:/var/lib/mysql
+    ports:
+      - "3306:3306"
+    healthcheck:
+      test: ["CMD", "healthcheck.sh", "--connect", "--innodb_initialized"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  web:
+    build: .
+    restart: unless-stopped
+    depends_on:
+      - db
+    environment:
+      DB_NAME: ${DB_NAME:-newsdb}
+      DB_USER: ${DB_USER:-newsapp}
+      DB_PASSWORD: ${DB_PASSWORD:-newsapp_password}
+      DB_HOST: db
+      DB_PORT: 3306
+      SITE_URL: ${SITE_URL:-http://localhost:8000}
+      EMAIL_HOST_USER: ${EMAIL_HOST_USER:-your_email@gmail.com}
+      EMAIL_HOST_PASSWORD: ${EMAIL_HOST_PASSWORD:-your_app_password}
+    ports:
+      - "8000:8000"
+
+volumes:
+  mariadb_data:

@@ -1,0 +1,1 @@
+<h1>All Approved Articles</h1>{% for a in articles %}<p><a href='{% url "article_detail" a.id %}'>{{a.title}}</a> - {{a.author}}</p>{% endfor %}

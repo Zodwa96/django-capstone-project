@@ -1,0 +1,1 @@
+<h1>Pending Articles</h1>{% for a in articles %}<p>{{a.title}} - <a href='{% url "article_approve" a.id %}'>Approve</a></p>{% empty %}<p>No pending</p>{% endfor %}

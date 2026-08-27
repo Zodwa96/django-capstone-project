@@ -1,0 +1,8 @@
+<h1>Register</h1>
+<form method="post">{% csrf_token %}
+<input name="username" placeholder="Username" required><br>
+<input name="email" type="email" placeholder="Email" required><br>
+<input name="password" type="password" placeholder="Password" required><br>
+<select name="role"><option value="READER">Reader</option><option value="JOURNALIST">Journalist</option></select><br>
+<button type="submit">Register</button>
+</form>

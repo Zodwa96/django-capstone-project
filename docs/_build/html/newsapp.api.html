@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="./">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>newsapp.api package &#8212; News Application 1.0 documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=5ecbeea2" />
+    <link rel="stylesheet" type="text/css" href="_static/basic.css?v=b08954a9" />
+    <link rel="stylesheet" type="text/css" href="_static/alabaster.css?v=27fed22d" />
+    <script src="_static/documentation_options.js?v=f2a433a1"></script>
+    <script src="_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="newsapp.management package" href="newsapp.management.html" />
+    <link rel="prev" title="newsapp package" href="newsapp.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="newsapp-api-package">
+<h1>newsapp.api package<a class="headerlink" href="#newsapp-api-package" title="Link to this heading">¶</a></h1>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Link to this heading">¶</a></h2>
+</section>
+<section id="module-newsapp.api.permissions">
+<span id="newsapp-api-permissions-module"></span><h2>newsapp.api.permissions module<a class="headerlink" href="#module-newsapp.api.permissions" title="Link to this heading">¶</a></h2>
+<p>Custom DRF permission classes based on the CustomUser <code class="docutils literal notranslate"><span class="pre">role</span></code> field.</p>
+<p>Each permission checks the user’s <code class="docutils literal notranslate"><span class="pre">role</span></code> field first, falling back
+to Django group membership, so that the API respects the same
+role/group system used by the browser-facing views.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="newsapp.api.permissions.IsEditor">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">newsapp.api.permissions.</span></span><span class="sig-name descname"><span class="pre">IsEditor</span></span><a class="reference internal" href="_modules/newsapp/api/permissions.html#IsEditor"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#newsapp.api.permissions.IsEditor" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">BasePermission</span></code></p>
+<p>Allow access only to authenticated editors.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="newsapp.api.permissions.IsEditor.has_permission">
+<span class="sig-name descname"><span class="pre">has_permission</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">view</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/newsapp/api/permissions.html#IsEditor.has_permission"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#newsapp.api.permissions.IsEditor.has_permission" title="Link to this definition">¶</a></dt>
+<dd><p>Return <cite>True</cite> if permission is granted, <cite>False</cite> otherwise.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="newsapp.api.permissions.IsJournalist">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">newsapp.api.permissions.</span></span><span class="sig-name descname"><span class="pre">IsJournalist</span></span><a class="reference internal" href="_modules/newsapp/api/permissions.html#IsJournalist"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#newsapp.api.permissions.IsJournalist" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">BasePermission</span></code></p>
+<p>Allow access only to authenticated journalists.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="newsapp.api.permissions.IsJournalist.has_permission">
+<span class="sig-name descname"><span class="pre">has_permission</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">view</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/newsapp/api/permissions.html#IsJournalist.has_permission"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#newsapp.api.permissions.IsJournalist.has_permission" title="Link to this definition">¶</a></dt>
+<dd><p>Return <cite>True</cite> if permission is granted, <cite>False</cite> otherwise.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="newsapp.api.permissions.IsReader">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">newsapp.api.permissions.</span></span><span class="sig-name descname"><span class="pre">IsReader</span></span><a class="reference internal" href="_modules/newsapp/api/permissions.html#IsReader"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#newsapp.api.permissions.IsReader" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">BasePermission</span></code></p>
+<p>Allow access only to authenticated readers.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="newsapp.api.permissions.IsReader.has_permission">
+<span class="sig-name descname"><span class="pre">has_permission</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">view</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/newsapp/api/permissions.html#IsReader.has_permission"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#newsapp.api.permissions.IsReader.has_permission" title="Link to this definition">¶</a></dt>
+<dd><p>Return <cite>True</cite> if permission is granted, <cite>False</cite> otherwise.</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-newsapp.api.serializers">
+<span id="newsapp-api-serializers-module"></span><h2>newsapp.api.serializers module<a class="headerlink" href="#module-newsapp.api.serializers" title="Link to this heading">¶</a></h2>
+<p>DRF serializers for the newsapp REST API.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="newsapp.api.serializers.ArticleSerializer">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">newsapp.api.serializers.</span></span><span class="sig-name descname"><span class="pre">ArticleSerializer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/newsapp/api/serializers.html#ArticleSerializer"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#newsapp.api.serializers.ArticleSerializer" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">ModelSerializer</span></code></p>
+<p>Serializes <a class="reference internal" href="newsapp.html#newsapp.models.Article" title="newsapp.models.Article"><code class="xref py py-class docutils literal notranslate"><span class="pre">Article</span></code></a> instances for the API.</p>
+<p>Adds read-only <code class="docutils literal notranslate"><span class="pre">author_name</span></code> and <code class="docutils literal notranslate"><span class="pre">publisher_name</span></code> convenience
+fields alongside the raw foreign key ids, and marks the
+system-managed fields (id, timestamps, author, approval status)
+as read-only so clients cannot set them directly.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="newsapp.api.serializers.ArticleSerializer.Meta">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">Meta</span></span><a class="reference internal" href="_modules/newsapp/api/serializers.html#ArticleSerializer.Meta"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#newsapp.api.serializers.ArticleSerializer.Meta" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="newsapp.api.serializers.ArticleSerializer.Meta.fields">
+<span class="sig-name descname"><span class="pre">fields</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">['id',</span> <span class="pre">'title',</span> <span class="pre">'content',</span> <span class="pre">'author',</span> <span class="pre">'author_name',</span> <span class="pre">'publisher',</span> <span class="pre">'publisher_name',</span> <span class="pre">'created_at',</span> <span class="pre">'approved',</span> <span class="pre">'approved_at']</span></span><a class="headerlink" href="#newsapp.api.serializers.ArticleSerializer.Meta.fields" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="newsapp.api.serializers.ArticleSerializer.Meta.model">
+<span class="sig-name descname"><span class="pre">model</span></span><a class="headerlink" href="#newsapp.api.serializers.ArticleSerializer.Meta.model" title="Link to this definition">¶</a></dt>
+<dd><p>alias of <a class="reference internal" href="newsapp.html#newsapp.models.Article" title="newsapp.models.Article"><code class="xref py py-class docutils literal notranslate"><span class="pre">Article</span></code></a></p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="newsapp.api.serializers.ArticleSerializer.Meta.read_only_fields">
+<span class="sig-name descname"><span class="pre">read_only_fields</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">['id',</span> <span class="pre">'created_at',</span> <span class="pre">'approved_at',</span> <span class="pre">'author',</span> <span class="pre">'approved']</span></span><a class="headerlink" href="#newsapp.api.serializers.ArticleSerializer.Meta.read_only_fields" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="newsapp.api.serializers.NewsletterSerializer">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">newsapp.api.serializers.</span></span><span class="sig-name descname"><span class="pre">NewsletterSerializer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/newsapp/api/serializers.html#NewsletterSerializer"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#newsapp.api.serializers.NewsletterSerializer" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">ModelSerializer</span></code></p>
+<p>Serializes <a class="reference internal" href="newsapp.html#newsapp.models.Newsletter" title="newsapp.models.Newsletter"><code class="xref py py-class docutils literal notranslate"><span class="pre">Newsletter</span></code></a> instances for the API.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="newsapp.api.serializers.NewsletterSerializer.Meta">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">Meta</span></span><a class="reference internal" href="_modules/newsapp/api/serializers.html#NewsletterSerializer.Meta"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#newsapp.api.serializers.NewsletterSerializer.Meta" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="newsapp.api.serializers.NewsletterSerializer.Meta.fields">
+<span class="sig-name descname"><span class="pre">fields</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">['id',</span> <span class="pre">'title',</span> <span class="pre">'description',</span> <span class="pre">'author',</span> <span class="pre">'author_name',</span> <span class="pre">'created_at',</span> <span class="pre">'articles']</span></span><a class="headerlink" href="#newsapp.api.serializers.NewsletterSerializer.Meta.fields" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="newsapp.api.serializers.NewsletterSerializer.Meta.model">
+<span class="sig-name descname"><span class="pre">model</span></span><a class="headerlink" href="#newsapp.api.serializers.NewsletterSerializer.Meta.model" title="Link to this definition">¶</a></dt>
+<dd><p>alias of <a class="reference internal" href="newsapp.html#newsapp.models.Newsletter" title="newsapp.models.Newsletter"><code class="xref py py-class docutils literal notranslate"><span class="pre">Newsletter</span></code></a></p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="newsapp.api.serializers.NewsletterSerializer.Meta.read_only_fields">
+<span class="sig-name descname"><span class="pre">read_only_fields</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">['id',</span> <span class="pre">'created_at',</span> <span class="pre">'author']</span></span><a class="headerlink" href="#newsapp.api.serializers.NewsletterSerializer.Meta.read_only_fields" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-newsapp.api.urls">
+<span id="newsapp-api-urls-module"></span><h2>newsapp.api.urls module<a class="headerlink" href="#module-newsapp.api.urls" title="Link to this heading">¶</a></h2>
+<p>URL routes for the newsapp REST API, including token auth and article endpoints.</p>
+</section>
+<section id="module-newsapp.api.views">
+<span id="newsapp-api-views-module"></span><h2>newsapp.api.views module<a class="headerlink" href="#module-newsapp.api.views" title="Link to this heading">¶</a></h2>
+<p>REST API views for browsing, creating, and moderating articles.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="newsapp.api.views.ArticleApprovalView">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">newsapp.api.views.</span></span><span class="sig-name descname"><span class="pre">ArticleApprovalView</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/newsapp/api/views.html#ArticleApprovalView"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#newsapp.api.views.ArticleApprovalView" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">APIView</span></code></p>
+<p>Let an editor approve a pending article via the API.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="newsapp.api.views.ArticleApprovalView.authentication_classes">
+<span class="sig-name descname"><span class="pre">authentication_classes</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">[&lt;class</span> <span class="pre">'rest_framework.authentication.TokenAuthentication'&gt;]</span></span><a class="headerlink" href="#newsapp.api.views.ArticleApprovalView.authentication_classes" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="newsapp.api.views.ArticleApprovalView.permission_classes">
+<span class="sig-name descname"><span class="pre">permission_classes</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">[&lt;class</span> <span class="pre">'rest_framework.permissions.IsAuthenticated'&gt;,</span> <span class="pre">&lt;class</span> <span class="pre">'newsapp.api.permissions.IsEditor'&gt;]</span></span><a class="headerlink" href="#newsapp.api.views.ArticleApprovalView.permission_classes" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="newsapp.api.views.ArticleApprovalView.post">
+<span class="sig-name descname"><span class="pre">post</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">article_id</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/newsapp/api/views.html#ArticleApprovalView.post"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#newsapp.api.views.ArticleApprovalView.post" title="Link to this definition">¶</a></dt>
+<dd><p>Mark the given article as approved by the requesting editor.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="newsapp.api.views.ArticleCreateView">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">newsapp.api.views.</span></span><span class="sig-name descname"><span class="pre">ArticleCreateView</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/newsapp/api/views.html#ArticleCreateView"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#newsapp.api.views.ArticleCreateView" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">CreateAPIView</span></code></p>
+<p>Let an authenticated journalist create a new article via the API.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="newsapp.api.views.ArticleCreateView.authentication_classes">
+<span class="sig-name descname"><span class="pre">authentication_classes</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">[&lt;class</span> <span class="pre">'rest_framework.authentication.TokenAuthentication'&gt;]</span></span><a class="headerlink" href="#newsapp.api.views.ArticleCreateView.authentication_classes" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="newsapp.api.views.ArticleCreateView.perform_create">
+<span class="sig-name descname"><span class="pre">perform_create</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">serializer</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/newsapp/api/views.html#ArticleCreateView.perform_create"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#newsapp.api.views.ArticleCreateView.perform_create" title="Link to this definition">¶</a></dt>
+<dd><p>Save the new article with the requesting user as its author.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="newsapp.api.views.ArticleCreateView.permission_classes">
+<span class="sig-name descname"><span class="pre">permission_classes</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">[&lt;class</span> <span class="pre">'rest_framework.permissions.IsAuthenticated'&gt;,</span> <span class="pre">&lt;class</span> <span class="pre">'newsapp.api.permissions.IsJournalist'&gt;]</span></span><a class="headerlink" href="#newsapp.api.views.ArticleCreateView.permission_classes" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="newsapp.api.views.ArticleCreateView.queryset">
+<span class="sig-name descname"><span class="pre">queryset</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;QuerySet</span> <span class="pre">[]&gt;</span></span><a class="headerlink" href="#newsapp.api.views.ArticleCreateView.queryset" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="newsapp.api.views.ArticleCreateView.serializer_class">
+<span class="sig-name descname"><span class="pre">serializer_class</span></span><a class="headerlink" href="#newsapp.api.views.ArticleCreateView.serializer_class" title="Link to this definition">¶</a></dt>
+<dd><p>alias of <a class="reference internal" href="#newsapp.api.serializers.ArticleSerializer" title="newsapp.api.serializers.ArticleSerializer"><code class="xref py py-class docutils literal notranslate"><span class="pre">ArticleSerializer</span></code></a></p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="newsapp.api.views.ArticleDeleteView">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">newsapp.api.views.</span></span><span class="sig-name descname"><span class="pre">ArticleDeleteView</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/newsapp/api/views.html#ArticleDeleteView"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#newsapp.api.views.ArticleDeleteView" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">DestroyAPIView</span></code></p>
+<p>Let a journalist or editor delete an article via the API.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="newsapp.api.views.ArticleDeleteView.authentication_classes">
+<span class="sig-name descname"><span class="pre">authentication_classes</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">[&lt;class</span> <span class="pre">'rest_framework.authentication.TokenAuthentication'&gt;]</span></span><a class="headerlink" href="#newsapp.api.views.ArticleDeleteView.authentication_classes" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="newsapp.api.views.ArticleDeleteView.permission_classes">
+<span class="sig-name descname"><span class="pre">permission_classes</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">[&lt;class</span> <span class="pre">'rest_framework.permissions.IsAuthenticated'&gt;,</span> <span class="pre">&lt;rest_framework.permissions.OperandHolder</span> <span class="pre">object&gt;]</span></span><a class="headerlink" href="#newsapp.api.views.ArticleDeleteView.permission_classes" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="newsapp.api.views.ArticleDeleteView.queryset">
+<span class="sig-name descname"><span class="pre">queryset</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;QuerySet</span> <span class="pre">[]&gt;</span></span><a class="headerlink" href="#newsapp.api.views.ArticleDeleteView.queryset" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="newsapp.api.views.ArticleDeleteView.serializer_class">
+<span class="sig-name descname"><span class="pre">serializer_class</span></span><a class="headerlink" href="#newsapp.api.views.ArticleDeleteView.serializer_class" title="Link to this definition">¶</a></dt>
+<dd><p>alias of <a class="reference internal" href="#newsapp.api.serializers.ArticleSerializer" title="newsapp.api.serializers.ArticleSerializer"><code class="xref py py-class docutils literal notranslate"><span class="pre">ArticleSerializer</span></code></a></p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="newsapp.api.views.ArticleDetailView">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">newsapp.api.views.</span></span><span class="sig-name descname"><span class="pre">ArticleDetailView</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/newsapp/api/views.html#ArticleDetailView"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#newsapp.api.views.ArticleDetailView" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">RetrieveAPIView</span></code></p>
+<p>Retrieve a single approved article by primary key.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="newsapp.api.views.ArticleDetailView.authentication_classes">
+<span class="sig-name descname"><span class="pre">authentication_classes</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">[&lt;class</span> <span class="pre">'rest_framework.authentication.TokenAuthentication'&gt;]</span></span><a class="headerlink" href="#newsapp.api.views.ArticleDetailView.authentication_classes" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="newsapp.api.views.ArticleDetailView.permission_classes">
+<span class="sig-name descname"><span class="pre">permission_classes</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">[&lt;class</span> <span class="pre">'rest_framework.permissions.IsAuthenticated'&gt;]</span></span><a class="headerlink" href="#newsapp.api.views.ArticleDetailView.permission_classes" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="newsapp.api.views.ArticleDetailView.queryset">
+<span class="sig-name descname"><span class="pre">queryset</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;QuerySet</span> <span class="pre">[]&gt;</span></span><a class="headerlink" href="#newsapp.api.views.ArticleDetailView.queryset" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="newsapp.api.views.ArticleDetailView.serializer_class">
+<span class="sig-name descname"><span class="pre">serializer_class</span></span><a class="headerlink" href="#newsapp.api.views.ArticleDetailView.serializer_class" title="Link to this definition">¶</a></dt>
+<dd><p>alias of <a class="reference internal" href="#newsapp.api.serializers.ArticleSerializer" title="newsapp.api.serializers.ArticleSerializer"><code class="xref py py-class docutils literal notranslate"><span class="pre">ArticleSerializer</span></code></a></p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="newsapp.api.views.ArticleListView">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">newsapp.api.views.</span></span><span class="sig-name descname"><span class="pre">ArticleListView</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/newsapp/api/views.html#ArticleListView"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#newsapp.api.views.ArticleListView" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">ListAPIView</span></code></p>
+<p>List all approved articles.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="newsapp.api.views.ArticleListView.authentication_classes">
+<span class="sig-name descname"><span class="pre">authentication_classes</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">[&lt;class</span> <span class="pre">'rest_framework.authentication.TokenAuthentication'&gt;]</span></span><a class="headerlink" href="#newsapp.api.views.ArticleListView.authentication_classes" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="newsapp.api.views.ArticleListView.permission_classes">
+<span class="sig-name descname"><span class="pre">permission_classes</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">[&lt;class</span> <span class="pre">'rest_framework.permissions.IsAuthenticated'&gt;]</span></span><a class="headerlink" href="#newsapp.api.views.ArticleListView.permission_classes" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="newsapp.api.views.ArticleListView.queryset">
+<span class="sig-name descname"><span class="pre">queryset</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;QuerySet</span> <span class="pre">[]&gt;</span></span><a class="headerlink" href="#newsapp.api.views.ArticleListView.queryset" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="newsapp.api.views.ArticleListView.serializer_class">
+<span class="sig-name descname"><span class="pre">serializer_class</span></span><a class="headerlink" href="#newsapp.api.views.ArticleListView.serializer_class" title="Link to this definition">¶</a></dt>
+<dd><p>alias of <a class="reference internal" href="#newsapp.api.serializers.ArticleSerializer" title="newsapp.api.serializers.ArticleSerializer"><code class="xref py py-class docutils literal notranslate"><span class="pre">ArticleSerializer</span></code></a></p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="newsapp.api.views.ArticleUpdateView">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">newsapp.api.views.</span></span><span class="sig-name descname"><span class="pre">ArticleUpdateView</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/newsapp/api/views.html#ArticleUpdateView"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#newsapp.api.views.ArticleUpdateView" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">UpdateAPIView</span></code></p>
+<p>Let a journalist or editor update an existing article via the API.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="newsapp.api.views.ArticleUpdateView.authentication_classes">
+<span class="sig-name descname"><span class="pre">authentication_classes</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">[&lt;class</span> <span class="pre">'rest_framework.authentication.TokenAuthentication'&gt;]</span></span><a class="headerlink" href="#newsapp.api.views.ArticleUpdateView.authentication_classes" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="newsapp.api.views.ArticleUpdateView.permission_classes">
+<span class="sig-name descname"><span class="pre">permission_classes</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">[&lt;class</span> <span class="pre">'rest_framework.permissions.IsAuthenticated'&gt;,</span> <span class="pre">&lt;rest_framework.permissions.OperandHolder</span> <span class="pre">object&gt;]</span></span><a class="headerlink" href="#newsapp.api.views.ArticleUpdateView.permission_classes" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="newsapp.api.views.ArticleUpdateView.queryset">
+<span class="sig-name descname"><span class="pre">queryset</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;QuerySet</span> <span class="pre">[]&gt;</span></span><a class="headerlink" href="#newsapp.api.views.ArticleUpdateView.queryset" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="newsapp.api.views.ArticleUpdateView.serializer_class">
+<span class="sig-name descname"><span class="pre">serializer_class</span></span><a class="headerlink" href="#newsapp.api.views.ArticleUpdateView.serializer_class" title="Link to this definition">¶</a></dt>
+<dd><p>alias of <a class="reference internal" href="#newsapp.api.serializers.ArticleSerializer" title="newsapp.api.serializers.ArticleSerializer"><code class="xref py py-class docutils literal notranslate"><span class="pre">ArticleSerializer</span></code></a></p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="newsapp.api.views.SubscribedArticlesView">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">newsapp.api.views.</span></span><span class="sig-name descname"><span class="pre">SubscribedArticlesView</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/newsapp/api/views.html#SubscribedArticlesView"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#newsapp.api.views.SubscribedArticlesView" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">ListAPIView</span></code></p>
+<p>List approved articles from publishers/journalists the reader follows.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="newsapp.api.views.SubscribedArticlesView.authentication_classes">
+<span class="sig-name descname"><span class="pre">authentication_classes</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">[&lt;class</span> <span class="pre">'rest_framework.authentication.TokenAuthentication'&gt;]</span></span><a class="headerlink" href="#newsapp.api.views.SubscribedArticlesView.authentication_classes" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="newsapp.api.views.SubscribedArticlesView.get_queryset">
+<span class="sig-name descname"><span class="pre">get_queryset</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/newsapp/api/views.html#SubscribedArticlesView.get_queryset"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#newsapp.api.views.SubscribedArticlesView.get_queryset" title="Link to this definition">¶</a></dt>
+<dd><p>Return approved articles matching the requesting reader’s subscriptions.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="newsapp.api.views.SubscribedArticlesView.permission_classes">
+<span class="sig-name descname"><span class="pre">permission_classes</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">[&lt;class</span> <span class="pre">'rest_framework.permissions.IsAuthenticated'&gt;,</span> <span class="pre">&lt;class</span> <span class="pre">'newsapp.api.permissions.IsReader'&gt;]</span></span><a class="headerlink" href="#newsapp.api.views.SubscribedArticlesView.permission_classes" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="newsapp.api.views.SubscribedArticlesView.serializer_class">
+<span class="sig-name descname"><span class="pre">serializer_class</span></span><a class="headerlink" href="#newsapp.api.views.SubscribedArticlesView.serializer_class" title="Link to this definition">¶</a></dt>
+<dd><p>alias of <a class="reference internal" href="#newsapp.api.serializers.ArticleSerializer" title="newsapp.api.serializers.ArticleSerializer"><code class="xref py py-class docutils literal notranslate"><span class="pre">ArticleSerializer</span></code></a></p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-newsapp.api">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-newsapp.api" title="Link to this heading">¶</a></h2>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">News Application</a></h1>
+
+
+
+
+
+
+
+
+
+<search id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="Search"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script><h3>Navigation</h3>
+<p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">Code Reference</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="newsapp.html">newsapp package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="newsproject.html">newsproject package</a></li>
+</ul>
+</li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+  <li><a href="modules.html">Code Reference</a><ul>
+  <li><a href="newsapp.html">newsapp package</a><ul>
+      <li>Previous: <a href="newsapp.html" title="previous chapter">newsapp package</a></li>
+      <li>Next: <a href="newsapp.management.html" title="next chapter">newsapp.management package</a></li>
+  </ul></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &#169;2026, HyperionDev Capstone Student.
+      
+      |
+      Powered by <a href="https://www.sphinx-doc.org/">Sphinx 9.1.0</a>
+      &amp; <a href="https://alabaster.readthedocs.io">Alabaster 1.0.0</a>
+      
+      |
+      <a href="_sources/newsapp.api.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
